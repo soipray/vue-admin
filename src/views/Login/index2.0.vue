@@ -5,9 +5,11 @@
         <li
           v-for="item in menuTab"
           :key="item.id"
-          :class="{'current': item.current}"
+          :class="{ current: item.current }"
           @click="toggleMenu(item)"
-        >{{item.txt}}</li>
+        >
+          {{ item.txt }}
+        </li>
       </ul>
       <!--表单start-->
       <el-form
@@ -20,7 +22,11 @@
       >
         <el-form-item prop="username" class="item-form">
           <label>邮箱</label>
-          <el-input type="text" v-model="ruleForm.username" autocomplete="off"></el-input>
+          <el-input
+            type="text"
+            v-model="ruleForm.username"
+            autocomplete="off"
+          ></el-input>
         </el-form-item>
 
         <el-form-item prop="password" class="item-form">
@@ -34,7 +40,11 @@
           ></el-input>
         </el-form-item>
 
-        <el-form-item prop="passwords" class="item-form" v-show="model === 'register'">
+        <el-form-item
+          prop="passwords"
+          class="item-form"
+          v-show="model === 'register'"
+        >
           <label>重复密码</label>
           <el-input
             type="text"
@@ -58,7 +68,12 @@
         </el-form-item>
 
         <el-form-item>
-          <el-button type="danger" @click="submitForm('ruleForm')" class="login-btn block">提交</el-button>
+          <el-button
+            type="danger"
+            @click="submitForm('ruleForm')"
+            class="login-btn block"
+            >提交</el-button
+          >
         </el-form-item>
       </el-form>
     </div>

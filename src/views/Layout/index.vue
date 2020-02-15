@@ -1,0 +1,20 @@
+<template>
+  <div id="layout">
+    <LayoutHeader />
+    <LayoutMain />
+    <LayoutNav />
+  </div>
+</template>
+
+<script>
+import LayoutHeader from "./Components/Header";
+import LayoutMain from "./Components/Main";
+import LayoutNav from "./Components/Nav";
+export default {
+  name: "Layout",
+  components: { LayoutHeader, LayoutMain, LayoutNav },
+  setup(props) {}
+};
+</script>
+
+<style lang="scss" scoped></style>

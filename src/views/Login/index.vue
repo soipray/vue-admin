@@ -5,9 +5,11 @@
         <li
           v-for="item in menuTab"
           :key="item.id"
-          :class="{'current': item.current}"
+          :class="{ current: item.current }"
           @click="toggleMenu(item)"
-        >{{item.txt}}</li>
+        >
+          {{ item.txt }}
+        </li>
       </ul>
       <!--表单start-->
       <el-form
@@ -20,7 +22,12 @@
       >
         <el-form-item prop="username" class="item-form">
           <label for="username">邮箱</label>
-          <el-input id="username" type="text" v-model="ruleForm.username" autocomplete="off"></el-input>
+          <el-input
+            id="username"
+            type="text"
+            v-model="ruleForm.username"
+            autocomplete="off"
+          ></el-input>
         </el-form-item>
 
         <el-form-item prop="password" class="item-form">
@@ -35,7 +42,11 @@
           ></el-input>
         </el-form-item>
 
-        <el-form-item prop="passwords" class="item-form" v-show="model === 'register'">
+        <el-form-item
+          prop="passwords"
+          class="item-form"
+          v-show="model === 'register'"
+        >
           <label for="passwords">重复密码</label>
           <el-input
             id="passwords"
@@ -56,9 +67,11 @@
             <el-col :span="9">
               <el-button
                 type="success"
+                class="block"
                 @click="getSms"
                 :disabled="codeButtonStatus.status"
-              >{{codeButtonStatus.text}}</el-button>
+                >{{ codeButtonStatus.text }}</el-button
+              >
             </el-col>
           </el-row>
         </el-form-item>
@@ -69,7 +82,8 @@
             @click="submitForm('loginForm')"
             class="login-btn block"
             :disabled="loginButtonStatus"
-          >{{model === 'login' ? "登录": "注册"}}</el-button>
+            >{{ model === "login" ? "登录" : "注册" }}</el-button
+          >
         </el-form-item>
       </el-form>
     </div>
@@ -207,12 +221,17 @@ export default {
     const login = () => {
       let requestData = {
         username: ruleForm.username,
-        password: password/*sha1(ruleForm.password)*/,
+        password: password /*sha1(ruleForm.password)*/,
         code: ruleForm.code
       };
       Login(requestData)
         .then(response => {
-          console.log(response);
+          root.$router.push({
+            name: "Console",
+            params: {
+              id: "111"
+            }
+          });
         })
         .catch(error => {});
     };
@@ -220,7 +239,7 @@ export default {
     const register = () => {
       let requestData = {
         username: ruleForm.username,
-        password: password/*sha1(ruleForm.password)*/,
+        password: password /*sha1(ruleForm.password)*/,
         code: ruleForm.code,
         module: "register"
       };
