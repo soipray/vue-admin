@@ -34,8 +34,8 @@ module.exports = {
   },
   // 生产环境是否生成 sourceMap 文件
   productionSourceMap: false,
-  // css相关配置
-  css: {
+  // css相关配置 vue cli4失效
+  /*css: {
     extract: true,
     sourceMap: false,
     loaderOptions: {
@@ -46,7 +46,7 @@ module.exports = {
       }
     },
     modules: false
-  },
+  },*/
   // use thread-loader for babel & TS in production build
   // enabled by default if the machine has more than 1 cores
   parallel: require("os").cpus().length > 1,

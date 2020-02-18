@@ -7,9 +7,7 @@
           :key="item.id"
           :class="{ current: item.current }"
           @click="toggleMenu(item)"
-        >
-          {{ item.txt }}
-        </li>
+        >{{ item.txt }}</li>
       </ul>
       <!--表单start-->
       <el-form
@@ -22,12 +20,7 @@
       >
         <el-form-item prop="username" class="item-form">
           <label for="username">邮箱</label>
-          <el-input
-            id="username"
-            type="text"
-            v-model="ruleForm.username"
-            autocomplete="off"
-          ></el-input>
+          <el-input id="username" type="text" v-model="ruleForm.username" autocomplete="off"></el-input>
         </el-form-item>
 
         <el-form-item prop="password" class="item-form">
@@ -42,11 +35,7 @@
           ></el-input>
         </el-form-item>
 
-        <el-form-item
-          prop="passwords"
-          class="item-form"
-          v-show="model === 'register'"
-        >
+        <el-form-item prop="passwords" class="item-form" v-show="model === 'register'">
           <label for="passwords">重复密码</label>
           <el-input
             id="passwords"
@@ -70,8 +59,7 @@
                 class="block"
                 @click="getSms"
                 :disabled="codeButtonStatus.status"
-                >{{ codeButtonStatus.text }}</el-button
-              >
+              >{{ codeButtonStatus.text }}</el-button>
             </el-col>
           </el-row>
         </el-form-item>
@@ -82,8 +70,7 @@
             @click="submitForm('loginForm')"
             class="login-btn block"
             :disabled="loginButtonStatus"
-            >{{ model === "login" ? "登录" : "注册" }}</el-button
-          >
+          >{{ model === "login" ? "登录" : "注册" }}</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -168,7 +155,7 @@ export default {
     //tab模块值
     const model = ref("login");
     //登录按钮禁用状态
-    const loginButtonStatus = ref(true);
+    const loginButtonStatus = ref(false);
     //验证码按钮装啊提
     const codeButtonStatus = reactive({
       status: false,
@@ -221,11 +208,14 @@ export default {
     const login = () => {
       let requestData = {
         username: ruleForm.username,
-        password: password /*sha1(ruleForm.password)*/,
+        password: ruleForm.password /*sha1(ruleForm.password)*/,
         code: ruleForm.code
       };
-      Login(requestData)
+
+      root.$store
+        .dispatch("app/login", requestData)
         .then(response => {
+          console.log("登录成功");
           root.$router.push({
             name: "Console",
             params: {
@@ -233,13 +223,15 @@ export default {
             }
           });
         })
-        .catch(error => {});
+        .catch(error => {
+          console.log(error);
+        });
     };
 
     const register = () => {
       let requestData = {
         username: ruleForm.username,
-        password: password /*sha1(ruleForm.password)*/,
+        password: ruleForm.password /*sha1(ruleForm.password)*/,
         code: ruleForm.code,
         module: "register"
       };
