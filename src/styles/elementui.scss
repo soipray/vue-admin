@@ -5,6 +5,10 @@
     &.is-active { background-color: rgba(245, 108, 108, 0.2) !important; }
 }
 
+.el-menu-vertical-demo {
+    border-right: 0 !important;
+}
+
 // 修改一级菜单样式
 li.el-submenu {
     &.is-active.is-opened .el-submenu__title { background-color: $mainCcolor !important; }
@@ -32,8 +36,8 @@ li.el-submenu {
     }
 }
 
-
-/*div.el-table {
+//table 样式
+div.el-table {
     td, th { text-align: center; }
     th {
         font-weight: bold;
@@ -42,7 +46,7 @@ li.el-submenu {
     td { font-size: 14px; }
 }
 
-
+//dialog样式
 .el-dialog__body {
     padding: 30px 47px !important;
 }
@@ -55,6 +59,7 @@ li.el-submenu {
     }
 }
 
+
 div.el-form-item { margin-bottom: 22px; }
 
 
@@ -62,4 +67,4 @@ div.el-form-item { margin-bottom: 22px; }
     .el-form-item:last-child {
         margin-bottom: 0 !important;
     }
-}*/
+}
