@@ -17,8 +17,6 @@ Vue.use(ElementUI);
 Vue.use(VueCompositionApi);
 Vue.config.productionTip = false;
 
-
-
 new Vue({
   router,
   store,
